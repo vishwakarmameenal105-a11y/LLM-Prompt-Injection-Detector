@@ -6,33 +6,17 @@ Being aware of all the security measures already built into large language model
 
 ## How It Works
 
-User prompt
-│
-▼
-patterns.py → Attack patterns (jailbreak, leakage, override)
-│
-▼
-scanner.py → Scans prompt for matches
-│
-▼
-scorer.py → Calculates risk score (0-100)
-│
-▼
-analyzer.py → Decides BLOCK / FLAG / ALLOW
-│
-▼
-main.py → Orchestrates everything
-
+User prompt → patterns.py → scanner.py → scorer.py → analyzer.py → main.py → Result
 
 ## Project Structure
 
 | Module | Purpose |
 |--------|---------|
-| `patterns.py` | Stores attack pattern lists — jailbreak, system prompt leakage, instruction override |
-| `scanner.py` | Scans a user prompt against all patterns and returns matches |
-| `scorer.py` | Calculates a risk score from matches (0-100) |
-| `analyzer.py` | Decides the verdict — BLOCK, FLAG, or ALLOW |
-| `main.py` | The orchestrator — ties all modules into one pipeline |
+| patterns.py | Stores attack pattern lists — jailbreak, system prompt leakage, instruction override |
+| scanner.py | Scans a user prompt against all patterns and returns matches |
+| scorer.py | Calculates a risk score from matches (0-100) |
+| analyzer.py | Decides the verdict — BLOCK, FLAG, or ALLOW |
+| main.py | The orchestrator — ties all modules into one pipeline |
 
 ## Detection Categories
 
@@ -52,28 +36,16 @@ main.py → Orchestrates everything
 
 ## Usage
 
-```bash
 python3 main.py
 
-from main import check_prompt
+## Why This Matters
 
-result = check_prompt("Your prompt here")
-print(result["risk_score"])
-print(result["verdict"])
-
-Why This Matters
 LLMs have built-in guardrails, but attackers constantly find new ways to bypass them. This tool is the second layer — customizable, auditable, and independent. You control the patterns. You see the score. You decide what gets blocked.
 
-Built With
+## Built With
+
 Pure Python. No external libraries. Runs anywhere Python runs.
 
-Built By
+## Built By
+
 Meenal Vishwakarma | 2026
-
-
-
-
-
-
-
-
